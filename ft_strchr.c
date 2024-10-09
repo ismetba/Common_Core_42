@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:39:24 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/09 22:37:49 by ibayandu         ###   ########.fr       */
+/*   Created: 2024/10/09 19:51:07 by ibayandu          #+#    #+#             */
+/*   Updated: 2024/10/09 20:01:02 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(const char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (*str++)
-		i++;
-	return (i);
+	while ((char)c != *s)
+	{
+		if (!*s)
+			return (0);
+		s++;
+	}
+	return ((char *)s);
 }

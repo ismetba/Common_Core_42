@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:39:24 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/09 22:37:49 by ibayandu         ###   ########.fr       */
+/*   Created: 2024/10/09 20:15:42 by ibayandu          #+#    #+#             */
+/*   Updated: 2024/10/09 22:19:48 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(const char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (*str++)
-		i++;
-	return (i);
+char	*ft_strrchr(const char *s, int c)
+{
+	int	length;
+
+	length = ft_strlen(s);
+	while (length >= 0)
+	{
+		if (*(s + length) == (char)c)
+			return ((char *)(s + length));
+		length--;
+	}
+	return (0);
 }

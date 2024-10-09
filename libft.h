@@ -6,7 +6,7 @@
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:39:18 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/08 13:49:33 by ibayandu         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:20:57 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,7 @@ unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
 unsigned int	ft_strlen(const char *str);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strrchr(const char *s, int c);
+int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 #endif
