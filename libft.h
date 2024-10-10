@@ -6,7 +6,7 @@
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:39:18 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/09 22:20:57 by ibayandu         ###   ########.fr       */
+/*   Updated: 2024/10/10 22:39:07 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ int				ft_tolower(int c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
+void			*ft_memchr(const void *s, int c, unsigned int n);
+int				ft_memcmp(const void *s1, const void *s2, unsigned int n);
+char			*ft_strnstr(const char *haystack, const char *needle,
+					unsigned int len);
+int				ft_atoi(const char *str);
 #endif
