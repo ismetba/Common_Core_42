@@ -24,16 +24,19 @@ RM = rm -f
 
 AR = ar rcs
 
-%.o : %.c
-	${CC} ${CFLAGS} -c $< -o $@
+all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${AR} ${NAME} ${OBJS} 
+	${AR} ${NAME} ${OBJS}
 
-all: ${NAME}
+${OBJS}: ${SRCS}
+	${CC} ${CFLAGS} -c ${SRCS}
 
 bonus: ${NAME} ${BONUS_OBJS}
 	${AR} ${NAME} ${BONUS_OBJS} 
+
+${BONUS_OBJS}: ${BONUS_SRC}
+	${CC} ${CFLAGS} -c ${BONUS_SRC}
 
 clean:
 	${RM} ${OBJS} ${BONUS_OBJS}

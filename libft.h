@@ -6,13 +6,14 @@
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:39:18 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/14 22:16:11 by ibayandu         ###   ########.fr       */
+/*   Updated: 2024/10/15 03:26:25 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <libc.h>
+# include <malloc/_malloc.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
