@@ -6,7 +6,7 @@
 /*   By: ibayandu <ibayandu@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:07:55 by ibayandu          #+#    #+#             */
-/*   Updated: 2024/10/14 20:21:00 by ibayandu         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:57:28 by ibayandu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,84 @@
 
 static int	count_words(char const *s, char c)
 {
-	int	count;
+	int	i;
+	int	words;
 
-	count = 0;
-	while (*s)
+	words = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			words++;
+		i++;
+	}
+	return (words);
+}
+
+static int	words_len(char const *s, char c)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (s[i] != c && s[i] != '\0')
+	{
+		i++;
+		len++;
+	}
+	return (len);
+}
+
+static void	*leak(char **splitted, int words)
+{
+	int	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(splitted[i]);
+		i++;
+	}
+	free(splitted);
+	return (NULL);
+}
+
+static char	**fill(char const *s, int words, char c, char **splitted)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = -1;
+	while (++i < words)
 	{
 		while (*s == c)
 			s++;
-		if (*s)
-			count++;
-		while (*s && *s != c)
-			s++;
+		len = words_len(s, c);
+		splitted[i] = (char *)malloc(sizeof(char) * (len + 1));
+		if (!splitted[i])
+			return (leak(splitted, i));
+		j = 0;
+		while (j < len)
+			splitted[i][j++] = *s++;
+		splitted[i][j] = '\0';
 	}
-	return (count);
+	splitted[i] = NULL;
+	return (splitted);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-	int		i;
-	int		j;
-	int		len;
+	char	**splitted;
+	int		words;
 
 	if (!s)
 		return (NULL);
-	len = count_words(s, c);
-	result = ft_calloc(len + 1, sizeof(char *));
-	if (!result)
+	words = count_words(s, c);
+	splitted = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!splitted)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		while (*s == c)
-			s++;
-		j = 0;
-		while (s[j] != c && s[j])
-			j++;
-		result[i++] = ft_substr(s, 0, j);
-		s += j;
-	}
-	return (result);
+	splitted = fill(s, words, c, splitted);
+	return (splitted);
 }
